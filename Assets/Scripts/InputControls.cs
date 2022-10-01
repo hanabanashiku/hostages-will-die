@@ -73,6 +73,24 @@ namespace Hanabanashiku.GameJam
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c28ee5e-b46d-46cf-aba8-acf54131b626"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ProjectileTarget"",
+                    ""type"": ""Value"",
+                    ""id"": ""3b519e3f-1a14-4876-a1b6-448eabda728c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -174,6 +192,28 @@ namespace Hanabanashiku.GameJam
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50021eb5-41ba-4978-ba5a-95ed8db045c3"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae38a067-fef1-490c-a03f-8a751b438a66"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""ProjectileTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -204,6 +244,8 @@ namespace Hanabanashiku.GameJam
             m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
             m_Player_Assassinate = m_Player.FindAction("Assassinate", throwIfNotFound: true);
+            m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+            m_Player_ProjectileTarget = m_Player.FindAction("ProjectileTarget", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -268,6 +310,8 @@ namespace Hanabanashiku.GameJam
         private readonly InputAction m_Player_Aim;
         private readonly InputAction m_Player_Fire;
         private readonly InputAction m_Player_Assassinate;
+        private readonly InputAction m_Player_Reload;
+        private readonly InputAction m_Player_ProjectileTarget;
         public struct PlayerActions
         {
             private @InputControls m_Wrapper;
@@ -277,6 +321,8 @@ namespace Hanabanashiku.GameJam
             public InputAction @Aim => m_Wrapper.m_Player_Aim;
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
             public InputAction @Assassinate => m_Wrapper.m_Player_Assassinate;
+            public InputAction @Reload => m_Wrapper.m_Player_Reload;
+            public InputAction @ProjectileTarget => m_Wrapper.m_Player_ProjectileTarget;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -301,6 +347,12 @@ namespace Hanabanashiku.GameJam
                     @Assassinate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAssassinate;
                     @Assassinate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAssassinate;
                     @Assassinate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAssassinate;
+                    @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                    @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                    @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                    @ProjectileTarget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProjectileTarget;
+                    @ProjectileTarget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProjectileTarget;
+                    @ProjectileTarget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProjectileTarget;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -320,6 +372,12 @@ namespace Hanabanashiku.GameJam
                     @Assassinate.started += instance.OnAssassinate;
                     @Assassinate.performed += instance.OnAssassinate;
                     @Assassinate.canceled += instance.OnAssassinate;
+                    @Reload.started += instance.OnReload;
+                    @Reload.performed += instance.OnReload;
+                    @Reload.canceled += instance.OnReload;
+                    @ProjectileTarget.started += instance.OnProjectileTarget;
+                    @ProjectileTarget.performed += instance.OnProjectileTarget;
+                    @ProjectileTarget.canceled += instance.OnProjectileTarget;
                 }
             }
         }
@@ -340,6 +398,8 @@ namespace Hanabanashiku.GameJam
             void OnAim(InputAction.CallbackContext context);
             void OnFire(InputAction.CallbackContext context);
             void OnAssassinate(InputAction.CallbackContext context);
+            void OnReload(InputAction.CallbackContext context);
+            void OnProjectileTarget(InputAction.CallbackContext context);
         }
     }
 }
