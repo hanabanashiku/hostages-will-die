@@ -8,7 +8,7 @@ namespace Hanabanashiku.GameJam {
         
         public GameDifficulty GameDifficulty = GameDifficulty.Hard;
         
-        public void Start() {
+        public void Awake() {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }

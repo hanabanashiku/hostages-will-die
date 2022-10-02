@@ -1,11 +1,13 @@
 using System;
 using Hanabanashiku.GameJam.Entities;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Hanabanashiku.GameJam.Models {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Scriptable Objects/New Weapon", order = 1)]
     public class Weapon : ScriptableObject {
         public string Name;
+        public Sprite Sprite;
         public float FireRate; // shots/sec
         public float DamagePerShot;
         public bool IsSilenced;

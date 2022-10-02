@@ -30,9 +30,9 @@ namespace Hanabanashiku.GameJam.Entities {
             _lineRenderer = GetComponent<LineRenderer>();
             _camera = Camera.main;
 
-            Debug.Assert(_rigidbody != null);
-            Debug.Assert(_lineRenderer != null);
-            Debug.Assert(_camera != null);
+            Debug.Assert(_rigidbody);
+            Debug.Assert(_lineRenderer);
+            Debug.Assert(_camera);
         }
 
         protected override void Die() {
