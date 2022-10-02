@@ -14,6 +14,10 @@ namespace Hanabanashiku.GameJam.UI {
 
         private void Start() {
             Time.timeScale = 0f;
+            
+            var rectangle = GetComponent<RectTransform>();
+            rectangle.offsetMin = new Vector2(500, 100);
+            rectangle.offsetMax = new Vector2(-500, -100);
         }
     }
 }

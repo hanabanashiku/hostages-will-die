@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameDifficulty: 2
   PauseMenuPrefab: {fileID: 551413710252877841, guid: c03b5a3ae80c6759f94e991df0b93c9a, type: 3}
+  DialogBoxPrefab: {fileID: 2547914649375995940, guid: ca4ae01a0cf60a0519912a9c2d1c1471, type: 3}

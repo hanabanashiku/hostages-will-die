@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
+using Mono.Data.Sqlite;
 using System.Linq;
 using Dapper;
 using Hanabanashiku.GameJam.Database.Entities;
@@ -11,7 +10,7 @@ namespace Hanabanashiku.GameJam.Database {
     public class DialogDatabase {
         private readonly IDbConnection _db;
         
-        private static string _uri => $"URI=file:${Application.streamingAssetsPath}/dlg";
+        private static string _uri => $"URI=file:{Application.streamingAssetsPath}/dlg";
         
         private const string GetConversationQuery = @"
             SELECT
@@ -30,10 +29,10 @@ namespace Hanabanashiku.GameJam.Database {
         ";
         
         public DialogDatabase() {
-            _db = new SQLiteConnection(_uri);
+            _db = new SqliteConnection(_uri);
         }
         
-        public IEnumerable<VoiceLine> GetConversation(int id) {
+        public VoiceLine[] GetConversation(int id) {
             var result = _db.Query<VoiceLine>(GetConversationQuery, new { p_ID = id}).ToArray();
             if(!result.Any()) {
                 throw new ArgumentException("Conversation not found", nameof(id));
