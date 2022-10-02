@@ -4,5 +4,7 @@ namespace Hanabanashiku.GameJam {
             public const string PLAYER = "Player";
             public const string PROJECTILE = "Projectile";
         }
+
+        public const float SHOT_VOLUME = 0.4f;
     }
 }

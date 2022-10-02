@@ -83,7 +83,7 @@ namespace Hanabanashiku.GameJam.Entities {
                 var position = transform.position;
                 var mouseLocation = _camera.ScreenToWorldPoint(Input.mousePosition);
                 mouseLocation.z = position.z;
-                EquippedWeapon.Fire(gameObject, Ammo, Quaternion.FromToRotation(position, mouseLocation));
+                EquippedWeapon.Fire(Ammo, Quaternion.FromToRotation(position, mouseLocation));
             }
         }
 
