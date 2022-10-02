@@ -1,5 +1,4 @@
 using Hanabanashiku.GameJam.Entities;
-using Hanabanashiku.GameJam.Models.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

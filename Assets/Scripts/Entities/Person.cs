@@ -55,7 +55,7 @@ namespace Hanabanashiku.GameJam.Entities {
             }
 
             IsReloading = true;
-            StartCoroutine(EquippedWeapon.PlayReloadSound());
+            StartCoroutine(EquippedWeapon.PlayReloadSound(Ammo));
             yield return new WaitForSeconds(EquippedWeapon.ReloadTime);
             EquippedWeapon.Reload(Ammo);
             IsReloading = false;

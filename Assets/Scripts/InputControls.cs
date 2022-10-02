@@ -91,6 +91,15 @@ namespace Hanabanashiku.GameJam
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c7b29e3-f6fe-46fe-ab3d-b68043c92bb4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +223,17 @@ namespace Hanabanashiku.GameJam
                     ""action"": ""ProjectileTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""272e3672-b0ab-4645-9583-d6230a1273d9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -246,6 +266,7 @@ namespace Hanabanashiku.GameJam
             m_Player_Assassinate = m_Player.FindAction("Assassinate", throwIfNotFound: true);
             m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
             m_Player_ProjectileTarget = m_Player.FindAction("ProjectileTarget", throwIfNotFound: true);
+            m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -312,6 +333,7 @@ namespace Hanabanashiku.GameJam
         private readonly InputAction m_Player_Assassinate;
         private readonly InputAction m_Player_Reload;
         private readonly InputAction m_Player_ProjectileTarget;
+        private readonly InputAction m_Player_Pause;
         public struct PlayerActions
         {
             private @InputControls m_Wrapper;
@@ -323,6 +345,7 @@ namespace Hanabanashiku.GameJam
             public InputAction @Assassinate => m_Wrapper.m_Player_Assassinate;
             public InputAction @Reload => m_Wrapper.m_Player_Reload;
             public InputAction @ProjectileTarget => m_Wrapper.m_Player_ProjectileTarget;
+            public InputAction @Pause => m_Wrapper.m_Player_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -353,6 +376,9 @@ namespace Hanabanashiku.GameJam
                     @ProjectileTarget.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProjectileTarget;
                     @ProjectileTarget.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProjectileTarget;
                     @ProjectileTarget.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProjectileTarget;
+                    @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -378,6 +404,9 @@ namespace Hanabanashiku.GameJam
                     @ProjectileTarget.started += instance.OnProjectileTarget;
                     @ProjectileTarget.performed += instance.OnProjectileTarget;
                     @ProjectileTarget.canceled += instance.OnProjectileTarget;
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
                 }
             }
         }
@@ -400,6 +429,7 @@ namespace Hanabanashiku.GameJam
             void OnAssassinate(InputAction.CallbackContext context);
             void OnReload(InputAction.CallbackContext context);
             void OnProjectileTarget(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }

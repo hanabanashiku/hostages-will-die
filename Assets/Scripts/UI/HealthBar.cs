@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Hanabanashiku.GameJam.UI {
+    [RequireComponent(typeof(Image))]
     public class HealthBar : MonoBehaviour {
         public float Health;
         public float MaxHealth;

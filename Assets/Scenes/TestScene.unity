@@ -413,6 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameDifficulty: 2
+  PauseMenuPrefab: {fileID: 551413710252877841, guid: c03b5a3ae80c6759f94e991df0b93c9a, type: 3}
 --- !u!4 &516043902
 Transform:
   m_ObjectHideFlags: 0

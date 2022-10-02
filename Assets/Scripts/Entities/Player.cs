@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Hanabanashiku.GameJam.Entities {
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(LineRenderer))]
     public class Player : Person {
         public int BaseSpeed = 100;
         public int SprintMultiplier = 10;
@@ -41,12 +43,18 @@ namespace Hanabanashiku.GameJam.Entities {
 
         private void Start() {
             _input.Player.Reload.started += OnReload;
+            _input.Player.Pause.started += OnPauseGame;
+            
             MaxHealth = CalculateMaxHealth();
             Health = MaxHealth;
         }
 
         private void OnReload(InputAction.CallbackContext context) {
             StartCoroutine(Reload());
+        }
+
+        private void OnPauseGame(InputAction.CallbackContext context) {
+            GameManager.Instance.PauseGame();
         }
 
         private void OnEnable() {

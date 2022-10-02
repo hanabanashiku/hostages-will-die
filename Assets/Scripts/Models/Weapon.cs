@@ -49,8 +49,8 @@ namespace Hanabanashiku.GameJam.Models {
             ammo.TotalBullets -= ammo.ShotsRemaining - originalChamber;
         }
 
-        public IEnumerator PlayReloadSound() {
-            yield return AudioSource.LoopClip(ReloadSound, ReloadSound.length < 0.5f ? ShotsPerRound : 1);
+        public IEnumerator PlayReloadSound(Ammo ammo) {
+            yield return AudioSource.LoopClip(ReloadSound, ReloadSound.length < 0.5f ? ShotsPerRound - ammo.ShotsRemaining : 1);
         }
     }
 }
