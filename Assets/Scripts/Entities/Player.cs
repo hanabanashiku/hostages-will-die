@@ -1,11 +1,13 @@
+using System;
+using Hanabanashiku.GameJam.Models.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Hanabanashiku.GameJam.Entities {
-    public class Player : Person, InputControls.IPlayerActions {
+    public class Player : Person {
         public int BaseSpeed = 100;
         public int SprintMultiplier = 10;
-        
+
         private InputControls _input;
         private Rigidbody _rigidbody;
         private LineRenderer _lineRenderer;
@@ -22,40 +24,33 @@ namespace Hanabanashiku.GameJam.Entities {
             }
         }
 
-        public void OnMovement(InputAction.CallbackContext context) {}
-
-        public void OnProjectileTarget(InputAction.CallbackContext context) {}
-
-        public void OnSprint(InputAction.CallbackContext context) {
-            _isSprinting = context.ReadValueAsButton();
-        }
-
-        public void OnAim(InputAction.CallbackContext context) {}
-
-        public void OnFire(InputAction.CallbackContext context) {}
-
-        public void OnReload(InputAction.CallbackContext context) {
-            StartCoroutine(Reload());
-        }
-
-        public void OnAssassinate(InputAction.CallbackContext context) {
-            throw new System.NotImplementedException();
-        }
-
         protected override void Awake() {
             base.Awake();
             _rigidbody = GetComponent<Rigidbody>();
             _lineRenderer = GetComponent<LineRenderer>();
             _camera = Camera.main;
-            
+
             Debug.Assert(_rigidbody != null);
             Debug.Assert(_lineRenderer != null);
             Debug.Assert(_camera != null);
         }
-        
+
+        protected override void Die() {
+            GameManager.Instance.Lose();
+        }
+
+        private void Start() {
+            _input.Player.Reload.started += OnReload;
+            MaxHealth = CalculateMaxHealth();
+            Health = MaxHealth;
+        }
+
+        private void OnReload(InputAction.CallbackContext context) {
+            StartCoroutine(Reload());
+        }
+
         private void OnEnable() {
             _input ??= new InputControls();
-            _input.Player.SetCallbacks(this);
             _input.Player.Enable();
         }
 
@@ -64,6 +59,8 @@ namespace Hanabanashiku.GameJam.Entities {
         }
 
         private void Update() {
+            _isSprinting = _input.Player.Sprint.IsPressed();
+
             // Aim Helper
             if(!IsReloading && _input.Player.Aim.IsPressed()) {
                 _lineRenderer.SetPosition(0, transform.position);
@@ -80,7 +77,7 @@ namespace Hanabanashiku.GameJam.Entities {
             var movementVector = _input.Player.Movement.ReadValue<Vector2>();
             _rigidbody.velocity =
                 new Vector3(movementVector.x, _rigidbody.velocity.y, movementVector.y) * _currentSpeed;
-            
+
             // Fire
             if(!IsReloading && _input.Player.Fire.IsPressed()) {
                 var position = transform.position;
@@ -88,6 +85,16 @@ namespace Hanabanashiku.GameJam.Entities {
                 mouseLocation.z = position.z;
                 EquippedWeapon.Fire(gameObject, Ammo, Quaternion.FromToRotation(position, mouseLocation));
             }
+        }
+
+        private static float CalculateMaxHealth() {
+            return GameManager.Instance.GameDifficulty switch {
+                GameDifficulty.Easy => 8,
+                GameDifficulty.Medium => 5,
+                GameDifficulty.Hard => 3,
+                GameDifficulty.ExtraHard => 1,
+                _ => throw new ArgumentOutOfRangeException(nameof(GameDifficulty))
+            };
         }
     }
 }
