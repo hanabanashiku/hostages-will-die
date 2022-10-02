@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.Menus {
+namespace Hanabanashiku.GameJam.UI {
     public class MainMenu : MonoBehaviour {
         public void ExitGame() {
             Console.WriteLine("test");

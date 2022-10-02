@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SemiAuto
   m_EditorClassIdentifier: 
   Name: Semi-automatic Rifle
+  Sprite: {fileID: 0}
   FireRate: 10
   DamagePerShot: 0.25
   IsSilenced: 0
@@ -20,3 +21,5 @@ MonoBehaviour:
   TotalShots: 360
   MaxShotDistance: 800
   ReloadTime: 2
+  FireSound: {fileID: 8300000, guid: 66441cf9954604b93b12543056c6ff69, type: 3}
+  ReloadSound: {fileID: 8300000, guid: 7fc60799060539c3f9969c4e7efc6244, type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SilencedPistol
   m_EditorClassIdentifier: 
   Name: Pistol
+  Sprite: {fileID: 0}
   FireRate: 3.16
   DamagePerShot: 1
   IsSilenced: 1
@@ -20,3 +21,5 @@ MonoBehaviour:
   TotalShots: 120
   MaxShotDistance: 1200
   ReloadTime: 1.5
+  FireSound: {fileID: 8300000, guid: 7d0023a3cbc1de829af4e63223237e74, type: 3}
+  ReloadSound: {fileID: 8300000, guid: d39bafec8be9c6ab3b85d48a512126b8, type: 3}
