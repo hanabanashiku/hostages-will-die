@@ -1,16 +1,21 @@
 using System;
+using Hanabanashiku.GameJam.Database;
 using Hanabanashiku.GameJam.Models.Enums;
 using UnityEngine;
 
 namespace Hanabanashiku.GameJam {
     public class GameManager : MonoBehaviour {
         public static GameManager Instance { get; private set; }
-        
+
+        public DialogDatabase DialogDatabase { get; private set; }
+
         public GameDifficulty GameDifficulty = GameDifficulty.Hard;
         public GameObject PauseMenuPrefab;
-        
+
         public void Awake() {
             Instance = this;
+         //   DialogDatabase = new DialogDatabase();
+
             DontDestroyOnLoad(gameObject);
         }
 
