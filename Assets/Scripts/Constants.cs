@@ -5,6 +5,7 @@ namespace Hanabanashiku.GameJam {
             public const string PROJECTILE = "Projectile";
         }
 
+        public const int MAX_HOSTAGES = 100;
         public const float SHOT_VOLUME = 0.4f;
     }
 }

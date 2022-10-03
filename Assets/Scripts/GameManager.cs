@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Hanabanashiku.GameJam.Database;
 using Hanabanashiku.GameJam.Models.Enums;
 using Hanabanashiku.GameJam.UI;
@@ -11,14 +12,20 @@ namespace Hanabanashiku.GameJam {
         public GameDifficulty GameDifficulty = GameDifficulty.Hard;
         public GameObject PauseMenuPrefab;
         public GameObject DialogBoxPrefab;
+        public int GameTimeForRun;
 
         private DialogDatabase _dialogDatabase;
+        private Coroutine _gameTimer;
         
         public void Awake() {
             Instance = this;
             _dialogDatabase = new DialogDatabase();
 
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start() {
+            _gameTimer = StartCoroutine(StartTimer());
         }
 
         public void Lose() {
@@ -42,7 +49,15 @@ namespace Hanabanashiku.GameJam {
             var dialogData = dialogBox.GetComponent<DialogBox>();
             dialogData.VoiceLines = dialog;
         }
-        
+
+        private IEnumerator StartTimer() {
+            while(true) {
+                yield return new WaitForSeconds(1f);
+                GameTimeForRun += 1;
+            }
+            // ReSharper disable once IteratorNeverReturns
+        }
+
         private static Canvas GetOrCreateCanvas() {
             var canvas = FindObjectOfType<Canvas>();
 
