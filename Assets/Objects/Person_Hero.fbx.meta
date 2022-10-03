@@ -2,7 +2,46 @@ fileFormatVersion: 2
 guid: f6e4316152209fce48570438a357ff70
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1665139928381245659
+    second: Armature|Arm.L.001Action
+  - first:
+      74: -8174563122150310294
+    second: Armature|Arm.L.005Action
+  - first:
+      74: -982115091633673366
+    second: Armature|Death
+  - first:
+      74: 2061746427244792891
+    second: Armature|Person_BadAction
+  - first:
+      74: 8695158609832292654
+    second: Arm.L.005|Arm.L.001Action
+  - first:
+      74: -432678574202061149
+    second: Arm.L.005|Arm.L.005Action
+  - first:
+      74: -8426133948956641109
+    second: Arm.L.005|Person_BadAction
+  - first:
+      74: -3921888455589300737
+    second: Person_Bad|Arm.L.001Action
+  - first:
+      74: -1804610595254026726
+    second: Person_Bad|Arm.L.005Action
+  - first:
+      74: 2799651658481879362
+    second: Person_Bad|Person_BadAction
+  - first:
+      74: 6179964877719909049
+    second: Arm.L.001|Arm.L.001Action
+  - first:
+      74: -1260396376707930181
+    second: Arm.L.001|Arm.L.005Action
+  - first:
+      74: -3047725953915614853
+    second: Arm.L.001|Person_BadAction
   externalObjects: {}
   materials:
     materialImportMode: 2

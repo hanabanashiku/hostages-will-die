@@ -2,7 +2,13 @@ fileFormatVersion: 2
 guid: fd6540ffa4102d9d884219ef50e6d1dc
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -432678574202061149
+    second: Arm.L.005|Arm.L.005Action
+  - first:
+      74: -8426133948956641109
+    second: Arm.L.005|Person_BadAction
   externalObjects: {}
   materials:
     materialImportMode: 2
