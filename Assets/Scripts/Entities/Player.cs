@@ -115,7 +115,7 @@ namespace Hanabanashiku.GameJam.Entities {
                 GameDifficulty.Easy => 8,
                 GameDifficulty.Medium => 5,
                 GameDifficulty.Hard => 3,
-                GameDifficulty.ExtraHard => 1,
+                GameDifficulty.Deadly => 1,
                 _ => throw new ArgumentOutOfRangeException(nameof(GameDifficulty))
             };
         }

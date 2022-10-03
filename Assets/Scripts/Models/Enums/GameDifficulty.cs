@@ -3,6 +3,6 @@ namespace Hanabanashiku.GameJam.Models.Enums {
         Easy,
         Medium,
         Hard,
-        ExtraHard
+        Deadly
     }
 }
