@@ -236,6 +236,56 @@ namespace Hanabanashiku.GameJam
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""14fa1cef-5489-4073-9554-daccd80f65f1"",
+            ""actions"": [
+                {
+                    ""name"": ""NextDialog"",
+                    ""type"": ""Button"",
+                    ""id"": ""2bb7f652-a8ba-4a0f-872b-62f171c4d463"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""50cd1ce4-5bd6-4ae8-a3bb-a0e8622c800e"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""NextDialog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f339c90-94cc-4c0f-8ed3-473b9a69151c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""NextDialog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""193a523b-5cb8-4f32-9790-9c36b66d4296"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""NextDialog"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -267,6 +317,9 @@ namespace Hanabanashiku.GameJam
             m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
             m_Player_ProjectileTarget = m_Player.FindAction("ProjectileTarget", throwIfNotFound: true);
             m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+            // UI
+            m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_NextDialog = m_UI.FindAction("NextDialog", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -411,6 +464,39 @@ namespace Hanabanashiku.GameJam
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
+
+        // UI
+        private readonly InputActionMap m_UI;
+        private IUIActions m_UIActionsCallbackInterface;
+        private readonly InputAction m_UI_NextDialog;
+        public struct UIActions
+        {
+            private @InputControls m_Wrapper;
+            public UIActions(@InputControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @NextDialog => m_Wrapper.m_UI_NextDialog;
+            public InputActionMap Get() { return m_Wrapper.m_UI; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+            public void SetCallbacks(IUIActions instance)
+            {
+                if (m_Wrapper.m_UIActionsCallbackInterface != null)
+                {
+                    @NextDialog.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNextDialog;
+                    @NextDialog.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNextDialog;
+                    @NextDialog.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNextDialog;
+                }
+                m_Wrapper.m_UIActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @NextDialog.started += instance.OnNextDialog;
+                    @NextDialog.performed += instance.OnNextDialog;
+                    @NextDialog.canceled += instance.OnNextDialog;
+                }
+            }
+        }
+        public UIActions @UI => new UIActions(this);
         private int m_PCSchemeIndex = -1;
         public InputControlScheme PCScheme
         {
@@ -430,6 +516,10 @@ namespace Hanabanashiku.GameJam
             void OnReload(InputAction.CallbackContext context);
             void OnProjectileTarget(InputAction.CallbackContext context);
             void OnPause(InputAction.CallbackContext context);
+        }
+        public interface IUIActions
+        {
+            void OnNextDialog(InputAction.CallbackContext context);
         }
     }
 }
