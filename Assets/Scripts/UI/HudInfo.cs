@@ -16,6 +16,7 @@ namespace Hanabanashiku.GameJam.UI {
             _player = FindObjectOfType<Player>();
             
             Debug.Assert(_player);
+            DontDestroyOnLoad(gameObject);
         }
 
         private void Update() {

@@ -4,6 +4,7 @@ using Hanabanashiku.GameJam.Database;
 using Hanabanashiku.GameJam.Models.Enums;
 using Hanabanashiku.GameJam.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Hanabanashiku.GameJam {
     public class GameManager : MonoBehaviour {
@@ -25,17 +26,12 @@ namespace Hanabanashiku.GameJam {
             DontDestroyOnLoad(gameObject);
         }
 
-        private void Start() {
-            _gameTimer = StartCoroutine(StartTimer());
+        public void StarTimer() {
+            StartCoroutine(StartBodyTimer());
         }
 
         public void Lose() {
-            // TODO
-            // Record loss
-            // Show loss modal
-            // Reload scene
-            // Move to last checkpoint
-            throw new NotImplementedException();
+            SceneManager.LoadScene(Constants.Scenes.LOSE);
         }
 
         public void PauseGame() {
@@ -43,15 +39,18 @@ namespace Hanabanashiku.GameJam {
              Instantiate(PauseMenuPrefab, canvas.transform, true);
         }
 
-        public void ShowDialog(int conversationId) {
+        public void ShowDialog(int conversationId, OnDialogFinish onFinish = null) {
             var dialog = _dialogDatabase.GetConversation(conversationId);
             var canvas = GetOrCreateCanvas();
             var dialogBox = Instantiate(DialogBoxPrefab, canvas.transform, true);
             var dialogData = dialogBox.GetComponent<DialogBox>();
+            if(onFinish is not null) {
+                dialogData.OnDialogFinish += onFinish;
+            }
             dialogData.VoiceLines = dialog;
         }
 
-        private IEnumerator StartTimer() {
+        private IEnumerator StartBodyTimer() {
             while(true) {
                 yield return new WaitForSeconds(1f);
                 GameTimeForRun += 1;
