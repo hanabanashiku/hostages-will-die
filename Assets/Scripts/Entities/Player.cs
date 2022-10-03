@@ -101,10 +101,7 @@ namespace Hanabanashiku.GameJam.Entities {
 
             // Fire
             if(!IsReloading && _input.Player.Fire.IsPressed()) {
-                var position = transform.position;
-                //var mouseLocation = _camera.ScreenToWorldPoint(Input.mousePosition);
-                mouseLocation.z = position.z;
-                EquippedWeapon.Fire(Ammo, Quaternion.FromToRotation(position, mouseLocation));
+                EquippedWeapon.Fire(Ammo);
             }
         }
 

@@ -1,3 +1,4 @@
+using System;
 using Hanabanashiku.GameJam.Models;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ namespace Hanabanashiku.GameJam.Entities {
     [RequireComponent(typeof(BoxCollider))]
     public class Bullet : MonoBehaviour {
         public Weapon Weapon { get; set; }
+        public string OriginTag;
 
         [SerializeField] private int _speed = 1000;
         private Vector3 _origin;
@@ -19,11 +21,7 @@ namespace Hanabanashiku.GameJam.Entities {
             DestroyIfTooFar();
         }
 
-        private void OnTriggerEnter(Collider other) {
-            if(other.CompareTag(Constants.Tags.PLAYER)) {
-                return;
-            }
-
+        private void OnCollisionEnter(Collision _) {
             Destroy(gameObject);
         }
 
@@ -35,11 +33,12 @@ namespace Hanabanashiku.GameJam.Entities {
             Destroy(gameObject);
         }
 
-        public static void InstantiateBullet(GameObject origin, Weapon weapon, Quaternion rotation) {
+        public static void InstantiateBullet(GameObject origin, Weapon weapon) {
             prefab ??= (GameObject)Resources.Load("Bullet");
-            var obj = Instantiate(prefab, origin.transform.position, rotation);
+            var obj = Instantiate(prefab, origin.transform.position + (Vector3.up * 4) + (Vector3.forward), origin.transform.rotation);
             var bullet = obj.GetComponent<Bullet>();
             bullet.Weapon = weapon;
+            bullet.OriginTag = origin.tag;
         }
     }
 }

@@ -36,8 +36,13 @@ namespace Hanabanashiku.GameJam.Entities {
 
         protected void OnCollisionEnter(Collision collision) {
             if(collision.gameObject.CompareTag(Constants.Tags.PROJECTILE)) {
-                var bullet = gameObject.GetComponent<Bullet>();
+                var bullet = collision.gameObject.GetComponent<Bullet>();
                 Debug.Assert(bullet);
+
+                if(gameObject.CompareTag(bullet.OriginTag)) {
+                    return;
+                }
+                
                 Damage(bullet.Weapon.DamagePerShot);
             }
         }
@@ -49,7 +54,7 @@ namespace Hanabanashiku.GameJam.Entities {
 
             Ammo.TotalBullets += Ammo.ShotsRemaining;
             Ammo.ShotsRemaining = 0;
-            EquippedWeapon.Reload(Ammo, PlaySound: false);
+            EquippedWeapon.Reload(Ammo);
         }
 
         protected IEnumerator Reload(bool playSound = true) {
