@@ -13,6 +13,7 @@ namespace Hanabanashiku.GameJam {
         public GameObject PauseMenuPrefab;
         public GameObject DialogBoxPrefab;
         public int GameTimeForRun;
+        public int EnemiesKilled;
 
         private DialogDatabase _dialogDatabase;
         private Coroutine _gameTimer;

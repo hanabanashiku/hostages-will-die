@@ -1,11 +1,19 @@
 fileFormatVersion: 2
-guid: 77093b20dc0d67092aa413da5b24aa16
+guid: fd6540ffa4102d9d884219ef50e6d1dc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
+<<<<<<< Updated upstream
+      74: -432678574202061149
+    second: Arm.L.005|Arm.L.005Action
+  - first:
+=======
       74: 8398630616439750657
     second: Armature|Arm.L.004Action
+  - first:
+      74: -8174563122150310294
+    second: Armature|Arm.L.005Action
   - first:
       74: 4781951162920444690
     second: Armature|ArmatureAction
@@ -15,6 +23,19 @@ ModelImporter:
   - first:
       74: -982115091633673366
     second: Armature|Death
+  - first:
+      74: -675755909350011126
+    second: Arm.L.005|Arm.L.004Action
+  - first:
+      74: -432678574202061149
+    second: Arm.L.005|Arm.L.005Action
+  - first:
+      74: 9047023961761446419
+    second: Arm.L.005|Body.004Action
+  - first:
+>>>>>>> Stashed changes
+      74: -8426133948956641109
+    second: Arm.L.005|Person_BadAction
   externalObjects: {}
   materials:
     materialImportMode: 2

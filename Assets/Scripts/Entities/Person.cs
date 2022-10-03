@@ -4,12 +4,14 @@ using Hanabanashiku.GameJam.Models;
 using UnityEngine;
 
 namespace Hanabanashiku.GameJam.Entities {
+    [RequireComponent(typeof(Rigidbody))]
     public abstract class Person : MonoBehaviour {
         public Weapon EquippedWeapon;
         public Ammo Ammo;
         public float Health;
         public float MaxHealth;
 
+        protected Rigidbody Rigidbody;
         protected bool IsReloading;
 
         public void Damage(float damage) {
@@ -21,6 +23,8 @@ namespace Hanabanashiku.GameJam.Entities {
         }
 
         protected virtual void Awake() {
+            Rigidbody = GetComponent<Rigidbody>();
+            
             if(EquippedWeapon) {
                 Equip(EquippedWeapon);
                 Ammo = new Ammo {
@@ -48,14 +52,18 @@ namespace Hanabanashiku.GameJam.Entities {
             EquippedWeapon.Reload(Ammo, PlaySound: false);
         }
 
-        protected IEnumerator Reload() {
+        protected IEnumerator Reload(bool playSound = true) {
             if(IsReloading || !EquippedWeapon || Ammo.TotalBullets == 0 ||
                Ammo.ShotsRemaining == EquippedWeapon.ShotsPerRound) {
                 yield break;
             }
 
             IsReloading = true;
-            StartCoroutine(EquippedWeapon.PlayReloadSound(Ammo));
+            
+            if(playSound) {
+                StartCoroutine(EquippedWeapon.PlayReloadSound(Ammo));
+            }
+
             yield return new WaitForSeconds(EquippedWeapon.ReloadTime);
             EquippedWeapon.Reload(Ammo);
             IsReloading = false;

@@ -11,7 +11,6 @@ namespace Hanabanashiku.GameJam.Entities {
         public int SprintMultiplier = 10;
 
         private InputControls _input;
-        private Rigidbody _rigidbody;
         private LineRenderer _lineRenderer;
         private Camera _camera;
         private bool _isSprinting;
@@ -28,11 +27,10 @@ namespace Hanabanashiku.GameJam.Entities {
 
         protected override void Awake() {
             base.Awake();
-            _rigidbody = GetComponent<Rigidbody>();
             _lineRenderer = GetComponent<LineRenderer>();
             _camera = Camera.main;
 
-            Debug.Assert(_rigidbody);
+            Debug.Assert(Rigidbody);
             Debug.Assert(_lineRenderer);
             Debug.Assert(_camera);
         }
@@ -97,7 +95,7 @@ namespace Hanabanashiku.GameJam.Entities {
             // Movement
             var movementVector = _input.Player.Movement.ReadValue<Vector2>();
             var currentTransform = transform;
-            _rigidbody.velocity =
+            Rigidbody.velocity =
                 (currentTransform.forward * movementVector.y + currentTransform.right * movementVector.x).normalized *
                 _currentSpeed;
 

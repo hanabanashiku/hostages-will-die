@@ -1,20 +1,94 @@
 fileFormatVersion: 2
-guid: 77093b20dc0d67092aa413da5b24aa16
+guid: f6e4316152209fce48570438a357ff70
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
+<<<<<<< Updated upstream
+      74: 1665139928381245659
+    second: Armature|Arm.L.001Action
+=======
       74: 8398630616439750657
     second: Armature|Arm.L.004Action
+>>>>>>> Stashed changes
   - first:
+      74: -8174563122150310294
+    second: Armature|Arm.L.005Action
+  - first:
+<<<<<<< Updated upstream
+=======
       74: 4781951162920444690
     second: Armature|ArmatureAction
   - first:
       74: -2846940006686802088
     second: Armature|Body.004Action
   - first:
+>>>>>>> Stashed changes
       74: -982115091633673366
     second: Armature|Death
+  - first:
+      74: 2061746427244792891
+    second: Armature|Person_BadAction
+  - first:
+<<<<<<< Updated upstream
+      74: 8695158609832292654
+    second: Arm.L.005|Arm.L.001Action
+=======
+      74: -4760029125197757450
+    second: Armature|Person_HeroAction
+  - first:
+      74: -675755909350011126
+    second: Arm.L.005|Arm.L.004Action
+>>>>>>> Stashed changes
+  - first:
+      74: -432678574202061149
+    second: Arm.L.005|Arm.L.005Action
+  - first:
+<<<<<<< Updated upstream
+      74: -8426133948956641109
+    second: Arm.L.005|Person_BadAction
+  - first:
+      74: -3921888455589300737
+    second: Person_Bad|Arm.L.001Action
+=======
+      74: 9047023961761446419
+    second: Arm.L.005|Body.004Action
+  - first:
+      74: -8426133948956641109
+    second: Arm.L.005|Person_BadAction
+  - first:
+      74: 3835088441378199391
+    second: Arm.L.005|Person_HeroAction
+  - first:
+      74: 8398528253157047287
+    second: Person_Bad|Arm.L.004Action
+>>>>>>> Stashed changes
+  - first:
+      74: -1804610595254026726
+    second: Person_Bad|Arm.L.005Action
+  - first:
+<<<<<<< Updated upstream
+      74: 2799651658481879362
+    second: Person_Bad|Person_BadAction
+  - first:
+      74: 6179964877719909049
+    second: Arm.L.001|Arm.L.001Action
+  - first:
+      74: -1260396376707930181
+    second: Arm.L.001|Arm.L.005Action
+  - first:
+      74: -3047725953915614853
+    second: Arm.L.001|Person_BadAction
+=======
+      74: -2888368569601423629
+    second: Person_Bad|Body.004Action
+  - first:
+      74: 2799651658481879362
+    second: Person_Bad|Person_BadAction
+  - first:
+      74: -7056189936757778041
+    second: Person_Bad|Person_HeroAction
+>>>>>>> Stashed changes
   externalObjects: {}
   materials:
     materialImportMode: 2
