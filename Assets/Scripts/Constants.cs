@@ -1,4 +1,4 @@
-namespace Hanabanashiku.GameJam {
+namespace Hanabanashiku.HostagesWillDie {
     public static class Constants {
         public static class Tags {
             public const string PLAYER = "Player";

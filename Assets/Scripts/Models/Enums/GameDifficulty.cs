@@ -1,4 +1,4 @@
-namespace Hanabanashiku.GameJam.Models.Enums {
+namespace Hanabanashiku.HostagesWillDie.Models.Enums {
     public enum GameDifficulty {
         Easy,
         Medium,

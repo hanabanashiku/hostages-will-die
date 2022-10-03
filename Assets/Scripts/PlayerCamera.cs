@@ -1,7 +1,7 @@
-using Hanabanashiku.GameJam.Entities;
+using Hanabanashiku.HostagesWillDie.Entities;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam {
+namespace Hanabanashiku.HostagesWillDie {
     public class PlayerCamera : MonoBehaviour {
         public float FollowDistance = 10;
 

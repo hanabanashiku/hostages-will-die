@@ -1,6 +1,6 @@
 using System;
 
-namespace Hanabanashiku.GameJam.Entities.Collectables {
+namespace Hanabanashiku.HostagesWillDie.Entities.Collectables {
     public sealed class AmmoBox : Collectable {
         public int AmmoAmount = 200;
         

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.UI {
+namespace Hanabanashiku.HostagesWillDie.UI {
     public class WinScreen : EndingScreen {
         public TextMeshProUGUI HostagesLeftUI;
         public TextMeshProUGUI TimeElapsedUI;

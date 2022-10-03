@@ -1,6 +1,6 @@
 using System;
 
-namespace Hanabanashiku.GameJam.Models {
+namespace Hanabanashiku.HostagesWillDie.Models {
     [Serializable]
     public sealed class Ammo {
         public int ShotsRemaining;

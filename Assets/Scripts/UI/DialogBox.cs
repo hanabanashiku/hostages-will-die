@@ -1,10 +1,10 @@
 using System;
-using Hanabanashiku.GameJam.Database.Entities;
+using Hanabanashiku.HostagesWillDie.Database.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Hanabanashiku.GameJam.UI {
+namespace Hanabanashiku.HostagesWillDie.UI {
     public delegate void OnDialogFinish();
     
     public class DialogBox : MonoBehaviour {

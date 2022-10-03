@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.Entities {
+namespace Hanabanashiku.HostagesWillDie.Entities {
     public class Enemy : Person {
         private Collider _target;
         private Camera _camera;

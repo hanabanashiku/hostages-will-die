@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.UI {
+namespace Hanabanashiku.HostagesWillDie.UI {
     public class PauseMenu : MonoBehaviour {
         public void OnContinue() {
             Time.timeScale = 1f;

@@ -1,9 +1,9 @@
 using System;
-using Hanabanashiku.GameJam.Models.Enums;
+using Hanabanashiku.HostagesWillDie.Models.Enums;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Hanabanashiku.GameJam.Entities {
+namespace Hanabanashiku.HostagesWillDie.Entities {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(LineRenderer))]
     public class Player : Person {

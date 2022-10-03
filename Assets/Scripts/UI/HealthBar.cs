@@ -1,9 +1,9 @@
 using System;
-using Hanabanashiku.GameJam.Models.Enums;
+using Hanabanashiku.HostagesWillDie.Models.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Hanabanashiku.GameJam.UI {
+namespace Hanabanashiku.HostagesWillDie.UI {
     [RequireComponent(typeof(Image))]
     public class HealthBar : MonoBehaviour {
         public float Health;

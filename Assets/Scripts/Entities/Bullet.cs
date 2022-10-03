@@ -1,8 +1,8 @@
 using System;
-using Hanabanashiku.GameJam.Models;
+using Hanabanashiku.HostagesWillDie.Models;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.Entities {
+namespace Hanabanashiku.HostagesWillDie.Entities {
     [RequireComponent(typeof(BoxCollider))]
     public class Bullet : MonoBehaviour {
         public Weapon Weapon { get; set; }

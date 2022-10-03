@@ -3,10 +3,10 @@ using System.Data;
 using Mono.Data.Sqlite;
 using System.Linq;
 using Dapper;
-using Hanabanashiku.GameJam.Database.Entities;
+using Hanabanashiku.HostagesWillDie.Database.Entities;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.Database {
+namespace Hanabanashiku.HostagesWillDie.Database {
     public class DialogDatabase {
         private readonly IDbConnection _db;
         

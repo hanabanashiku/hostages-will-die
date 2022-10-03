@@ -1,9 +1,9 @@
-using Hanabanashiku.GameJam.Entities;
+using Hanabanashiku.HostagesWillDie.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Hanabanashiku.GameJam.UI {
+namespace Hanabanashiku.HostagesWillDie.UI {
     public class HudInfo : MonoBehaviour {
         public Image WeaponImage;
         public TextMeshProUGUI ShotsRemainingText;

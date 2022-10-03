@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.Helpers {
+namespace Hanabanashiku.HostagesWillDie.Helpers {
     public static class AudioHelper {
         public static IEnumerator LoopClip(this AudioSource source, AudioClip clip, int times, float volume = 1.0f) {
             if(times <= 0) {

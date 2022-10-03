@@ -1,4 +1,4 @@
-namespace Hanabanashiku.GameJam.Database.Entities {
+namespace Hanabanashiku.HostagesWillDie.Database.Entities {
     public class VoiceLine {
         public string CharacterName { get; set; }
         

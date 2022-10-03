@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using Hanabanashiku.GameJam.Database;
-using Hanabanashiku.GameJam.Models.Enums;
-using Hanabanashiku.GameJam.UI;
+using Hanabanashiku.HostagesWillDie.Database;
+using Hanabanashiku.HostagesWillDie.Models.Enums;
+using Hanabanashiku.HostagesWillDie.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Hanabanashiku.GameJam {
+namespace Hanabanashiku.HostagesWillDie {
     public class GameManager : MonoBehaviour {
         public static GameManager Instance { get; private set; }
         
@@ -26,7 +26,7 @@ namespace Hanabanashiku.GameJam {
             DontDestroyOnLoad(gameObject);
         }
 
-        public void StarTimer() {
+        public void StartTimer() {
             StartCoroutine(StartBodyTimer());
         }
 
@@ -48,6 +48,10 @@ namespace Hanabanashiku.GameJam {
                 dialogData.OnDialogFinish += onFinish;
             }
             dialogData.VoiceLines = dialog;
+        }
+
+        private void Start() {
+            StartTimer();
         }
 
         private IEnumerator StartBodyTimer() {

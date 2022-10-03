@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using Hanabanashiku.GameJam.UI;
+using Hanabanashiku.HostagesWillDie.UI;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam {
+namespace Hanabanashiku.HostagesWillDie {
     public class HostageCounter : MonoBehaviour {
         public int HostagesRemaining = Constants.MAX_HOSTAGES;
         

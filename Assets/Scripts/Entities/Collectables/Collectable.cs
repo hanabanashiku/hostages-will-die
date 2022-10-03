@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.Entities.Collectables {
+namespace Hanabanashiku.HostagesWillDie.Entities.Collectables {
     public abstract class Collectable : MonoBehaviour {
         protected abstract bool Apply(Player player);
         

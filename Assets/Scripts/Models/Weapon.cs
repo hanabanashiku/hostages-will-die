@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using Hanabanashiku.GameJam.Entities;
-using Hanabanashiku.GameJam.Helpers;
+using Hanabanashiku.HostagesWillDie.Entities;
+using Hanabanashiku.HostagesWillDie.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Hanabanashiku.GameJam.Models {
+namespace Hanabanashiku.HostagesWillDie.Models {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Scriptable Objects/New Weapon", order = 1)]
     public class Weapon : ScriptableObject {
         public string Name;

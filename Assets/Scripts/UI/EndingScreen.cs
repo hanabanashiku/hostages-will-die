@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Hanabanashiku.GameJam.UI {
+namespace Hanabanashiku.HostagesWillDie.UI {
     public class EndingScreen : MonoBehaviour {
         public int TotalEnemiesKilled;
         public int GameTime;

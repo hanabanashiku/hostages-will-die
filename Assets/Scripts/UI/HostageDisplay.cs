@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.UI {
+namespace Hanabanashiku.HostagesWillDie.UI {
     [RequireComponent(typeof(AudioSource))]
     public class HostageDisplay : MonoBehaviour {
         public float ShowForSeconds = 2.7f;

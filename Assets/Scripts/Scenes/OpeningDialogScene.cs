@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Hanabanashiku.GameJam.Scenes {
+namespace Hanabanashiku.HostagesWillDie.Scenes {
     public class OpeningDialogScene : MonoBehaviour {
         private void Start() {
             GameManager.Instance.ShowDialog(Constants.Dialogues.OPEN_DIALOG, OnFinish);

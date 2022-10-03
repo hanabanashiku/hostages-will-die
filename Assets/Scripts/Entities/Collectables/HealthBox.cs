@@ -1,7 +1,7 @@
 using System;
-using Hanabanashiku.GameJam.Models.Enums;
+using Hanabanashiku.HostagesWillDie.Models.Enums;
 
-namespace Hanabanashiku.GameJam.Entities.Collectables {
+namespace Hanabanashiku.HostagesWillDie.Entities.Collectables {
     public class HealthBox : Collectable {
         public int HealthToRestore = -1;
         

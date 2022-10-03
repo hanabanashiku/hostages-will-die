@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using Hanabanashiku.GameJam.Models;
+using Hanabanashiku.HostagesWillDie.Models;
 using UnityEngine;
 
-namespace Hanabanashiku.GameJam.Entities {
+namespace Hanabanashiku.HostagesWillDie.Entities {
     [RequireComponent(typeof(Rigidbody))]
     public abstract class Person : MonoBehaviour {
         public Weapon EquippedWeapon;
