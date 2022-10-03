@@ -1,14 +1,19 @@
+using System;
 using Hanabanashiku.GameJam.Database.Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Hanabanashiku.GameJam.UI {
+    public delegate void OnDialogFinish();
+    
     public class DialogBox : MonoBehaviour {
         public VoiceLine[] VoiceLines { get; set; }
 
         public TextMeshProUGUI Nameplate;
         public TextMeshProUGUI DialogText;
+
+        public event OnDialogFinish OnDialogFinish;
 
         private int _currentIndex;
         private InputControls _input;
@@ -35,6 +40,7 @@ namespace Hanabanashiku.GameJam.UI {
 
         private void OnNextDialog(InputAction.CallbackContext context) {
             if(VoiceLines.Length == _currentIndex + 1) {
+                OnDialogFinish?.Invoke();
                 Destroy(gameObject);
                 return;
             }
