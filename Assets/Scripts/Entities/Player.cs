@@ -78,18 +78,33 @@ namespace Hanabanashiku.GameJam.Entities {
             else {
                 _lineRenderer.enabled = false;
             }
+
+            // Rotate character
+            var ray = _camera.ScreenPointToRay(Input.mousePosition);
+            var plane = new Plane(Vector3.up, Vector3.zero);
+
+            if(plane.Raycast(ray, out var distance)) {
+                var target = ray.GetPoint(distance);
+                var direction = target - transform.position;
+                var rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, rotation, 0);
+            }
         }
 
         private void FixedUpdate() {
+            var mouseLocation = _camera.ScreenToWorldPoint(Input.mousePosition);
+
             // Movement
             var movementVector = _input.Player.Movement.ReadValue<Vector2>();
+            var currentTransform = transform;
             _rigidbody.velocity =
-                new Vector3(movementVector.x, _rigidbody.velocity.y, movementVector.y) * _currentSpeed;
+                (currentTransform.forward * movementVector.y + currentTransform.right * movementVector.x).normalized *
+                _currentSpeed;
 
             // Fire
             if(!IsReloading && _input.Player.Fire.IsPressed()) {
                 var position = transform.position;
-                var mouseLocation = _camera.ScreenToWorldPoint(Input.mousePosition);
+                //var mouseLocation = _camera.ScreenToWorldPoint(Input.mousePosition);
                 mouseLocation.z = position.z;
                 EquippedWeapon.Fire(Ammo, Quaternion.FromToRotation(position, mouseLocation));
             }
